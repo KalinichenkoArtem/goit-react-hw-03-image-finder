@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { createPortal } from 'react-dom';
 import { Overlay, ModalContainer } from 'components/Modal/Modal.styled';
 import PropTypes from 'prop-types';
-
-const modalRoot = document.querySelector('#modal-root');
 
 class Modal extends Component {
   static propTypes = {
@@ -32,11 +29,10 @@ class Modal extends Component {
   };
 
   render() {
-    return createPortal(
+    return (
       <Overlay onClick={this.handleClickOnBackdrop}>
         <ModalContainer>{this.props.children}</ModalContainer>
-      </Overlay>,
-      modalRoot
+      </Overlay>
     );
   }
 }
